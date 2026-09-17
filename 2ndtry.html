@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Delegate Modern Grounds Model United Nations</title>
+  
+  <!-- Modern Editorial Serif & Sans Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    /* Base Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg-deep-green: #0b1d13;
+      --border-green: rgba(255, 255, 255, 0.12);
+      --text-main: #f1f5f2;
+      --text-muted: #8ca395;
+      --accent-brass: #d4af37;
+    }
+
+    body {
+      min-height: 100vh;
+      background-color: var(--bg-deep-green);
+      font-family: 'Inter', sans-serif;
+      color: var(--text-main);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      padding: 3rem 2rem;
+      position: relative;
+      /* Subtle dark grid texture */
+      background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+
+    /* Minimalist Top Header */
+    header {
+      width: 100%;
+      max-width: 1100px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border-green);
+    }
+
+    .org-code {
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .status-dot {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .dot {
+      width: 6px;
+      height: 6px;
+      background-color: var(--accent-brass);
+      border-radius: 50%;
+    }
+
+    /* Main Content Area */
+    main {
+      text-align: center;
+      max-width: 850px;
+      margin: auto;
+      padding: 4rem 0;
+    }
+
+    .meta-tag {
+      font-size: 0.8rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--accent-brass);
+      margin-bottom: 2rem;
+      font-weight: 500;
+    }
+
+    h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.5rem, 6vw, 4.8rem);
+      font-weight: 400;
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+      color: var(--text-main);
+      margin-bottom: 3rem;
+    }
+
+    .rule {
+      width: 40px;
+      height: 1px;
+      background-color: var(--accent-brass);
+      margin: 0 auto 3rem;
+    }
+
+    .coming-soon {
+      font-size: clamp(0.9rem, 2vw, 1.1rem);
+      font-weight: 400;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: var(--text-main);
+    }
+
+    /* Clean Footer */
+    footer {
+      width: 100%;
+      max-width: 1100px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border-green);
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      letter-spacing: 0.05em;
+    }
+
+    /* Fade-in Animation */
+    .fade-in {
+      animation: fadeIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(12px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 600px) {
+      header, footer {
+        flex-direction: column;
+        gap: 12px;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Bar -->
+  <header class="fade-in">
+    <span class="org-code">DMGMUN</span>
+    <div class="status-dot">
+      <span class="dot"></span>
+      <span>Development in progress</span>
+    </div>
+  </header>
+
+  <!-- Teaser Hero -->
+  <main class="fade-in">
+    <div class="meta-tag">SUMMER 2027</div>
+    
+    <h1>Delegate Modern Grounds<br>Model United Nations</h1>
+    
+    <div class="rule"></div>
+    
+    <div class="coming-soon">Coming Soon</div>
+  </main>
+
+  <!-- Bottom Bar -->
+  <footer class="fade-in">
+    <span>Made with <3 by DMGMUN team</span>
+  </footer>
+
+</body>
+</html>
