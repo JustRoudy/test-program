@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Delegate Modern Grounds Model United Nations | DMGMUN</title>
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Fonts: Cormorant Garamond & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            deepGreen: '#0b1d13',
+            darkGreen: '#07130c',
+            cardGreen: '#12291c',
+            borderGreen: 'rgba(255, 255, 255, 0.12)',
+            brass: '#d4af37',
+            brassHover: '#b8952b',
+            brassLight: 'rgba(212, 175, 55, 0.15)',
+            textMain: '#f1f5f2',
+            textMuted: '#8ca395',
+          },
+          fontFamily: {
+            serif: ['Cormorant Garamond', 'serif'],
+            sans: ['Inter', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      background-color: #0b1d13;
+      color: #f1f5f2;
+      font-family: 'Inter', sans-serif;
+      background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+      background-size: 50px 50px;
+    }
+
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #07130c;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #12291c;
+      border-radius: 3px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #d4af37;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between selection:bg-brass selection:text-deepGreen">
+
+  <!-- Navigation Header -->
+  <header class="sticky top-0 z-40 w-full backdrop-blur-md bg-deepGreen/90 border-b border-borderGreen transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
+      
+      <!-- Top Left Logo: DMGMUN -->
+      <a href="#" class="flex flex-col group">
+        <span class="font-serif text-2xl tracking-wider text-textMain font-semibold leading-tight group-hover:text-brass transition-colors">DMGMUN</span>
+        <span class="text-[9px] uppercase tracking-[0.25em] text-textMuted">Conference</span>
+      </a>
+
+      <!-- Desktop Links -->
+      <nav class="hidden md:flex items-center gap-8 text-xs uppercase tracking-[0.2em] font-medium text-textMuted">
+        <a href="#committees" class="hover:text-brass transition-colors">Committees</a>
+        <a href="#core-team" class="hover:text-brass transition-colors">applications</a>
+        <a href="#faq" class="hover:text-brass transition-colors">FAQ</a>
+        <a href="#contact" class="hover:text-brass transition-colors">Contact</a>
+      </nav>
+
+      <!-- Status Badge & CTA -->
+      <div class="hidden sm:flex items-center gap-5">
+        <div class="flex items-center gap-2 text-[11px] uppercase tracking-widest text-textMuted px-3 py-1 rounded-full border border-borderGreen bg-darkGreen/40">
+          <span class="w-2 h-2 rounded-full bg-brass animate-pulse"></span>
+          <span>core team Applications Open</span>
+        </div>
+        
+        <a href="https://forms.gle/Dxjdftj2WwWSoqcB8 target="_blank" rel="noopener noreferrer" class="text-xs uppercase tracking-[0.18em] px-4 py-2.5 bg-brass text-deepGreen font-semibold hover:bg-brassHover transition-all shadow-sm">
+          Apply Now
+        </a>
+      </div>
+
+      <!-- Mobile Hamburger Button -->
+      <button id="mobileMenuBtn" class="md:hidden text-textMain hover:text-brass text-xl focus:outline-none" aria-label="Toggle Navigation">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </div>
+
+    <!-- Mobile Dropdown Navigation -->
+    <div id="mobileMenu" class="hidden md:hidden bg-darkGreen border-b border-borderGreen px-6 py-6 flex flex-col gap-4 text-xs uppercase tracking-[0.2em]">
+      <a href="#committees" onclick="toggleMobileMenu()" class="text-textMuted hover:text-brass py-1">Committees</a>
+      <a href="#core-team" onclick="toggleMobileMenu()" class="text-textMuted hover:text-brass py-1">applications</a>
+      <a href="#faq" onclick="toggleMobileMenu()" class="text-textMuted hover:text-brass py-1">FAQ</a>
+      <a href="#contact" onclick="toggleMobileMenu()" class="text-textMuted hover:text-brass py-1">Contact</a>
+      <div class="pt-4 border-t border-borderGreen flex flex-col gap-3">
+        <div class="flex items-center gap-2 text-[11px] uppercase tracking-widest text-textMuted">
+          <span class="w-2 h-2 rounded-full bg-brass"></span>
+          <span>core team Applications Open</span>
+        </div>
+        <a href="https://forms.gle/Dxjdftj2WwWSoqcB8" target="_blank" rel="noopener noreferrer" class="text-xs uppercase tracking-[0.18em] px-4 py-3 bg-brass text-deepGreen font-semibold text-center w-full">
+          Core Team Application
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="relative min-h-[calc(100vh-5rem)] flex items-center justify-center px-6 py-20 overflow-hidden">
+    <!-- Subtle architectural background accent -->
+    <div class="absolute inset-0 flex items-center justify-center opacity-5 pointer-events-none">
+      <div class="w-[600px] h-[600px] border border-brass rounded-full"></div>
+      <div class="absolute w-[450px] h-[450px] border border-brass/50 rounded-full"></div>
+    </div>
+
+    <div class="max-w-4xl mx-auto text-center z-10">
+      <!-- Top Badge: SUMMER 2027 -->
+      <div class="inline-flex items-center gap-3 px-4 py-1.5 rounded-full border border-brass/30 bg-brassLight text-brass text-xs uppercase tracking-[0.3em] font-medium mb-8">
+        <i class="fa-regular fa-calendar-check text-[11px]"></i>
+        SUMMER 2027
+      </div>
+
+      <h1 class="font-serif text-4xl sm:text-6xl md:text-7xl font-normal leading-[1.1] tracking-tight text-textMain mb-8">
+        Delegate Modern Grounds<br>
+        <span class="italic font-light text-brass">Model United Nations</span>
+      </h1>
+
+      <p class="text-textMuted text-base sm:text-lg max-w-2xl mx-auto font-light leading-relaxed mb-10">
+        Strengthening youth's diplomacy, policymaking, networking and public speaking. Join us for the first edition of DMGMUN.
+      </p>
+
+      <div class="w-12 h-[1px] bg-brass mx-auto mb-10"></div>
+
+      <!-- Hero Actions -->
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
+        <a href="https://forms.gle/Dxjdftj2WwWSoqcB8" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto text-xs uppercase tracking-[0.2em] px-8 py-4 bg-brass text-deepGreen font-semibold hover:bg-brassHover transition-all shadow-lg hover:shadow-brass/10 text-center">
+          Core Team Application
+        </a>
+        <a href="#contact" class="w-full sm:w-auto text-xs uppercase tracking-[0.2em] px-8 py-4 bg-transparent text-textMain border border-borderGreen hover:border-textMain hover:bg-white/[0.03] transition-all text-center">
+          Contact Secretariat
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Committees Section -->
+  <section id="committees" class="py-24 px-6 border-t border-borderGreen bg-darkGreen/30">
+    <div class="max-w-6xl mx-auto">
+      
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <span class="text-brass text-xs uppercase tracking-[0.3em] font-semibold block mb-2">Committees</span>
+        <h2 class="font-serif text-3xl sm:text-5xl font-normal text-textMain mb-4">Our carefully chosen committeess</h2>
+      </div>
+
+      <!-- Committee Cards (DISEC, UN Women, WHO) -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        
+        <!-- Committee 1: DISEC -->
+        <div class="group border border-borderGreen bg-cardGreen/30 hover:bg-cardGreen/70 p-8 flex flex-col justify-between transition-all duration-300">
+          <div>
+            <div class="flex justify-between items-start mb-6">
+              <span class="px-2.5 py-1 bg-brass/10 border border-brass/30 text-brass text-[10px] uppercase tracking-widest font-semibold">General Assembly 1</span>
+              <i class="fa-solid fa-shield-halved text-textMuted group-hover:text-brass transition-colors"></i>
+            </div>
+            <h3 class="font-serif text-3xl text-textMain mb-2">DISEC</h3>
+            <p class="text-[11px] uppercase tracking-wider text-brass mb-6">Disarmament & International Security</p>
+          </div>
+          <div class="pt-6 border-t border-borderGreen/50">
+            <span class="text-[10px] uppercase tracking-widest text-textMuted block mb-2 font-medium">Committee Agenda</span>
+            <p class="text-xs text-textMain font-medium leading-relaxed">
+              The proliferation of hypersonic weapons and nuclear delivery systems.
+            </p>
+          </div>
+        </div>
+
+        <!-- Committee 2: UN Women -->
+        <div class="group border border-borderGreen bg-cardGreen/30 hover:bg-cardGreen/70 p-8 flex flex-col justify-between transition-all duration-300">
+          <div>
+            <div class="flex justify-between items-start mb-6">
+              <span class="px-2.5 py-1 bg-brass/10 border border-brass/30 text-brass text-[10px] uppercase tracking-widest font-semibold">Specialized Entity</span>
+              <i class="fa-solid fa-venus text-textMuted group-hover:text-brass transition-colors"></i>
+            </div>
+            <h3 class="font-serif text-3xl text-textMain mb-2">UN - Women</h3>
+            <p class="text-[11px] uppercase tracking-wider text-brass mb-6">Gender Equality & Empowerment</p>
+          </div>
+          <div class="pt-6 border-t border-borderGreen/50">
+            <span class="text-[10px] uppercase tracking-widest text-textMuted block mb-2 font-medium">Committee Agenda</span>
+            <p class="text-xs text-textMain font-medium leading-relaxed">
+              Closing the gender digital divide and promoting STEM equality.
+            </p>
+          </div>
+        </div>
+
+        <!-- Committee 3: WHO -->
+        <div class="group border border-borderGreen bg-cardGreen/30 hover:bg-cardGreen/70 p-8 flex flex-col justify-between transition-all duration-300">
+          <div>
+            <div class="flex justify-between items-start mb-6">
+              <span class="px-2.5 py-1 bg-brass/10 border border-brass/30 text-brass text-[10px] uppercase tracking-widest font-semibold">Specialized Agency</span>
+              <i class="fa-solid fa-staff-snake text-textMuted group-hover:text-brass transition-colors"></i>
+            </div>
+            <h3 class="font-serif text-3xl text-textMain mb-2">WHO</h3>
+            <p class="text-[11px] uppercase tracking-wider text-brass mb-6">World Health Organization</p>
+          </div>
+          <div class="pt-6 border-t border-borderGreen/50">
+            <span class="text-[10px] uppercase tracking-widest text-textMuted block mb-2 font-medium">Committee Agenda</span>
+            <p class="text-xs text-textMain font-medium leading-relaxed">
+              Integration of generative ai and autonomous diagnostic systems in clinical care.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Core Team Callout Section -->
+  <section id="core-team" class="py-20 px-6 border-t border-borderGreen bg-gradient-to-b from-darkGreen to-deepGreen">
+    <div class="max-w-5xl mx-auto border border-brass/30 bg-cardGreen/50 p-8 sm:p-14 relative overflow-hidden text-center sm:text-left flex flex-col md:flex-row items-center justify-between gap-8">
+      <div class="max-w-2xl">
+        <span class="text-brass text-xs uppercase tracking-[0.3em] font-semibold block mb-2">Core Team Recruitment</span>
+        <h3 class="font-serif text-3xl sm:text-4xl text-textMain mb-4">Core Team Application</h3>
+        <p class="text-textMuted text-sm font-light leading-relaxed">
+          Become a person involved in shaping the whole conference.
+        </p>
+      </div>
+      <div class="shrink-0">
+        <a href="https://forms.gle/Dxjdftj2WwWSoqcB8" target="_blank" rel="noopener noreferrer" class="inline-block text-xs uppercase tracking-[0.2em] px-8 py-4 bg-brass text-deepGreen font-semibold hover:bg-brassHover transition-all shadow-md">
+          Core Team Application
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section (2 questions only) -->
+  <section id="faq" class="py-24 px-6 border-t border-borderGreen bg-darkGreen/30">
+    <div class="max-w-4xl mx-auto">
+      
+      <div class="text-center mb-16">
+        <span class="text-brass text-xs uppercase tracking-[0.3em] font-semibold block mb-2">Inquiries</span>
+        <h2 class="font-serif text-3xl sm:text-5xl font-normal text-textMain mb-4">Frequently Asked Questions</h2>
+        <p class="text-textMuted text-sm font-light">Key details regarding conference timelines and delegate registration.</p>
+      </div>
+
+      <div class="space-y-4">
+        
+        <!-- FAQ 1: Delegate Registrations -->
+        <div class="border border-borderGreen bg-cardGreen/20 transition-all">
+          <button onclick="toggleFaq(1)" class="w-full text-left p-6 flex justify-between items-center text-textMain hover:text-brass transition-colors focus:outline-none">
+            <span class="font-serif text-xl sm:text-2xl">When will delegate registrations open?</span>
+            <i id="faq-icon-1" class="fa-solid fa-chevron-down text-xs text-brass transition-transform duration-300"></i>
+          </button>
+          <div id="faq-answer-1" class="hidden px-6 pb-6 text-textMuted text-xs sm:text-sm leading-relaxed font-light border-t border-borderGreen/30 pt-4">
+            Delegate registrations are expected to open early 2027.
+          </div>
+        </div>
+
+        <!-- FAQ 2: Event Date -->
+        <div class="border border-borderGreen bg-cardGreen/20 transition-all">
+          <button onclick="toggleFaq(2)" class="w-full text-left p-6 flex justify-between items-center text-textMain hover:text-brass transition-colors focus:outline-none">
+            <span class="font-serif text-xl sm:text-2xl">When will it take place?</span>
+            <i id="faq-icon-2" class="fa-solid fa-chevron-down text-xs text-brass transition-transform duration-300"></i>
+          </button>
+          <div id="faq-answer-2" class="hidden px-6 pb-6 text-textMuted text-xs sm:text-sm leading-relaxed font-light border-t border-borderGreen/30 pt-4">
+            DMGMUN is estimated to be hosted around on the 7th and 8th of August, 2027. However, no confirmed dates have been released yet.
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="py-24 px-6 border-t border-borderGreen">
+    <div class="max-w-6xl mx-auto">
+      
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <span class="text-brass text-xs uppercase tracking-[0.3em] font-semibold block mb-2">Communication</span>
+        <h2 class="font-serif text-3xl sm:text-5xl font-normal text-textMain mb-4">Reach the Secretariat</h2>
+        <p class="text-textMuted text-sm font-light leading-relaxed">
+          Connect with us through our official social media accounts.
+        </p>
+      </div>
+
+      <!-- Contact Cards Grid (Email, Instagram, TikTok) -->
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+        
+        <!-- Email Card -->
+        <div class="border border-borderGreen bg-cardGreen/30 p-8 flex flex-col justify-between hover:border-brass/40 transition-all duration-300 group">
+          <div>
+            <div class="w-12 h-12 border border-borderGreen bg-darkGreen flex items-center justify-center text-brass mb-6 group-hover:border-brass transition-colors">
+              <i class="fa-regular fa-envelope text-lg"></i>
+            </div>
+            <span class="text-[10px] uppercase tracking-widest text-textMuted block mb-1">Official Inquiry</span>
+            <h3 class="font-serif text-xl text-textMain mb-3">Email Secretariat</h3>
+            <p class="text-textMuted text-xs font-light leading-relaxed mb-6">
+              Direct line for delegate inquiries, committee documents, and institutional delegations.
+            </p>
+          </div>
+          <a href="mailto:contact@dmgmun.org" class="text-xs text-brass font-medium hover:underline inline-flex items-center gap-2">
+            <span>contact@dmgmun.org</span>
+            <i class="fa-solid fa-arrow-right text-[10px]"></i>
+          </a>
+        </div>
+
+        <!-- Instagram Card -->
+        <div class="border border-borderGreen bg-cardGreen/30 p-8 flex flex-col justify-between hover:border-brass/40 transition-all duration-300 group">
+          <div>
+            <div class="w-12 h-12 border border-borderGreen bg-darkGreen flex items-center justify-center text-brass mb-6 group-hover:border-brass transition-colors">
+              <i class="fa-brands fa-instagram text-lg"></i>
+            </div>
+            <span class="text-[10px] uppercase tracking-widest text-textMuted block mb-1">Social Dispatch</span>
+            <h3 class="font-serif text-xl text-textMain mb-3">Instagram</h3>
+            <p class="text-textMuted text-xs font-light leading-relaxed mb-6">
+              Follow real-time Secretariat announcements, recruitment deadlines, and session teasers.
+            </p>
+          </div>
+          <a href="https://instagram.com/dmgmun" target="_blank" rel="noopener noreferrer" class="text-xs text-brass font-medium hover:underline inline-flex items-center gap-2">
+            <span>@dmgmun</span>
+            <i class="fa-solid fa-arrow-right text-[10px]"></i>
+          </a>
+        </div>
+
+        <!-- TikTok Card -->
+        <div class="border border-borderGreen bg-cardGreen/30 p-8 flex flex-col justify-between hover:border-brass/40 transition-all duration-300 group">
+          <div>
+            <div class="w-12 h-12 border border-borderGreen bg-darkGreen flex items-center justify-center text-brass mb-6 group-hover:border-brass transition-colors">
+              <i class="fa-brands fa-tiktok text-lg"></i>
+            </div>
+            <span class="text-[10px] uppercase tracking-widest text-textMuted block mb-1">Video Highlights</span>
+            <h3 class="font-serif text-xl text-textMain mb-3">TikTok</h3>
+            <p class="text-textMuted text-xs font-light leading-relaxed mb-6">
+              Watch behind-the-scenes content, committee teasers, and delegate tips on TikTok.
+            </p>
+          </div>
+          <a href="https://tiktok.com/dmgmun" target="_blank" rel="noopener noreferrer" class="text-xs text-brass font-medium hover:underline inline-flex items-center gap-2">
+            <span>@dmgmun</span>
+            <i class="fa-solid fa-arrow-right text-[10px]"></i>
+          </a>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="w-full border-t border-borderGreen bg-darkGreen py-12 px-6">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+      
+      <div class="flex flex-col items-center md:items-start gap-2">
+        <div class="flex items-center gap-3">
+          <span class="font-serif text-xl tracking-wider text-textMain font-semibold">DMGMUN</span>
+          <span class="text-xs tracking-widest text-textMuted uppercase"></span>
+        </div>
+        <p class="text-[11px] text-textMuted font-light">Delegate Modern Grounds Model United Nations</p>
+      </div>
+
+      <!-- Social Links (Email, Instagram, TikTok) -->
+      <div class="flex items-center gap-6 text-textMuted text-base">
+        <a href="mailto:contact@dmgmun.org" class="hover:text-brass transition-colors" aria-label="Email"><i class="fa-regular fa-envelope"></i></a>
+        <a href="https://instagram.com/dmgmun" target="_blank" rel="noopener noreferrer" class="hover:text-brass transition-colors" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a href="https://tiktok.com/@dmgmun" target="_blank" rel="noopener noreferrer" class="hover:text-brass transition-colors" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+      </div>
+
+      <div class="text-[11px] text-textMuted tracking-wider uppercase text-center md:text-right">
+        <span>Made with <3 by the DMGMUN team</span>
+      </div>
+
+    </div>
+  </footer>
+
+  <script>
+    // Toggle Mobile Navigation Menu
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobileMenu');
+      menu.classList.toggle('hidden');
+    }
+
+    // Toggle Mobile Menu Button Listener
+    document.getElementById('mobileMenuBtn').addEventListener('click', toggleMobileMenu);
+
+    // Accordion FAQ Toggle
+    function toggleFaq(id) {
+      const answer = document.getElementById(`faq-answer-${id}`);
+      const icon = document.getElementById(`faq-icon-${id}`);
+      
+      if (answer.classList.contains('hidden')) {
+        answer.classList.remove('hidden');
+        icon.classList.add('rotate-180');
+      } else {
+        answer.classList.add('hidden');
+        icon.classList.remove('rotate-180');
+      }
+    }
+  </script>
+</body>
+</html>
