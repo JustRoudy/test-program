@@ -6,6 +6,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Delegate Modern Grounds Model United Nations | DMGMUN</title>
   
+  <!-- Inline script to prevent screen flicker and properly handle system preferences -->
+  <script>
+    (function() {
+      const savedTheme = localStorage.getItem('theme');
+      const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      
+      if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+    })();
+  </script>
+
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
   
@@ -157,14 +171,12 @@
 
   <!-- Hero Section -->
   <section class="relative min-h-[calc(100vh-5rem)] flex items-center justify-center px-6 py-20 overflow-hidden">
-    <!-- Subtle architectural background accent -->
     <div class="absolute inset-0 flex items-center justify-center opacity-10 dark:opacity-20 pointer-events-none">
       <div class="w-[600px] h-[600px] border border-brass rounded-full"></div>
       <div class="absolute w-[450px] h-[450px] border border-brass/50 rounded-full"></div>
     </div>
 
     <div class="max-w-4xl mx-auto text-center z-10">
-      <!-- Top Badge: SUMMER 2027 -->
       <div class="inline-flex items-center gap-3 px-4 py-1.5 rounded-full border border-brass/30 bg-brassLight text-brass text-xs uppercase tracking-[0.3em] font-medium mb-8">
         <i class="fa-regular fa-calendar-check text-[11px]"></i>
         8-9 MAY 2027, AOU BADARO
@@ -181,7 +193,6 @@
 
       <div class="w-12 h-[1px] bg-brass mx-auto mb-10"></div>
 
-      <!-- Hero Actions -->
       <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
         <a href="https://forms.gle/Dxjdftj2WwWSoqcB8" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto text-xs uppercase tracking-[0.2em] px-8 py-4 bg-brass text-white font-semibold hover:bg-brassHover transition-all shadow-lg hover:shadow-brass/20 text-center">
           Core Team Application
@@ -196,16 +207,12 @@
   <!-- Committees Section -->
   <section id="committees" class="py-24 px-6 border-t border-[#d65b78]/20 bg-[#fdf2f4] dark:bg-[#180e11]">
     <div class="max-w-6xl mx-auto">
-      
       <div class="text-center max-w-2xl mx-auto mb-16">
         <span class="text-brass text-xs uppercase tracking-[0.3em] font-semibold block mb-2">Committees</span>
         <h2 class="font-serif text-3xl sm:text-5xl font-normal text-[#2b1b20] dark:text-[#f8ecf0] mb-4">Our carefully chosen committees</h2>
       </div>
 
-      <!-- Committee Cards (DISEC, UN Women, WHO) -->
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        
-        <!-- Committee 1: DISEC -->
         <div class="group border border-[#d65b78]/20 bg-white dark:bg-[#201116] hover:border-brass/50 p-8 flex flex-col justify-between transition-all duration-300 shadow-sm hover:shadow-md">
           <div>
             <div class="flex justify-between items-start mb-6">
@@ -217,13 +224,10 @@
           </div>
           <div class="pt-6 border-t border-[#d65b78]/20">
             <span class="text-[10px] uppercase tracking-widest text-[#7c5e67] dark:text-[#be9da6] block mb-2 font-medium">Committee Agenda</span>
-            <p class="text-xs text-[#2b1b20] dark:text-[#f8ecf0] font-medium leading-relaxed">
-              TBD
-            </p>
+            <p class="text-xs text-[#2b1b20] dark:text-[#f8ecf0] font-medium leading-relaxed">TBD</p>
           </div>
         </div>
 
-        <!-- Committee 2: UN Women -->
         <div class="group border border-[#d65b78]/20 bg-white dark:bg-[#201116] hover:border-brass/50 p-8 flex flex-col justify-between transition-all duration-300 shadow-sm hover:shadow-md">
           <div>
             <div class="flex justify-between items-start mb-6">
@@ -235,13 +239,10 @@
           </div>
           <div class="pt-6 border-t border-[#d65b78]/20">
             <span class="text-[10px] uppercase tracking-widest text-[#7c5e67] dark:text-[#be9da6] block mb-2 font-medium">Committee Agenda</span>
-            <p class="text-xs text-[#2b1b20] dark:text-[#f8ecf0] font-medium leading-relaxed">
-              TBD
-            </p>
+            <p class="text-xs text-[#2b1b20] dark:text-[#f8ecf0] font-medium leading-relaxed">TBD</p>
           </div>
         </div>
 
-        <!-- Committee 3: WHO -->
         <div class="group border border-[#d65b78]/20 bg-white dark:bg-[#201116] hover:border-brass/50 p-8 flex flex-col justify-between transition-all duration-300 shadow-sm hover:shadow-md">
           <div>
             <div class="flex justify-between items-start mb-6">
@@ -253,12 +254,9 @@
           </div>
           <div class="pt-6 border-t border-[#d65b78]/20">
             <span class="text-[10px] uppercase tracking-widest text-[#7c5e67] dark:text-[#be9da6] block mb-2 font-medium">Committee Agenda</span>
-            <p class="text-xs text-[#2b1b20] dark:text-[#f8ecf0] font-medium leading-relaxed">
-              TBD
-            </p>
+            <p class="text-xs text-[#2b1b20] dark:text-[#f8ecf0] font-medium leading-relaxed">TBD</p>
           </div>
         </div>
-
       </div>
     </div>
   </section>
@@ -281,10 +279,9 @@
     </div>
   </section>
 
-  <!-- FAQ Section (2 questions only) -->
+  <!-- FAQ Section -->
   <section id="faq" class="py-24 px-6 border-t border-[#d65b78]/20 bg-[#fdf2f4] dark:bg-[#180e11]">
     <div class="max-w-4xl mx-auto">
-      
       <div class="text-center mb-16">
         <span class="text-brass text-xs uppercase tracking-[0.3em] font-semibold block mb-2">Inquiries</span>
         <h2 class="font-serif text-3xl sm:text-5xl font-normal text-[#2b1b20] dark:text-[#f8ecf0] mb-4">Frequently Asked Questions</h2>
@@ -292,8 +289,6 @@
       </div>
 
       <div class="space-y-4">
-        
-        <!-- FAQ 1: Delegate Registrations -->
         <div class="border border-[#d65b78]/20 bg-white dark:bg-[#201116] transition-all shadow-sm">
           <button onclick="toggleFaq(1)" class="w-full text-left p-6 flex justify-between items-center text-[#2b1b20] dark:text-[#f8ecf0] hover:text-brass transition-colors focus:outline-none">
             <span class="font-serif text-xl sm:text-2xl">When will delegate registrations open?</span>
@@ -304,7 +299,6 @@
           </div>
         </div>
 
-        <!-- FAQ 2: Event Date -->
         <div class="border border-[#d65b78]/20 bg-white dark:bg-[#201116] transition-all shadow-sm">
           <button onclick="toggleFaq(2)" class="w-full text-left p-6 flex justify-between items-center text-[#2b1b20] dark:text-[#f8ecf0] hover:text-brass transition-colors focus:outline-none">
             <span class="font-serif text-xl sm:text-2xl">When will it take place?</span>
@@ -314,7 +308,6 @@
             DMGMUN is estimated to be hosted around on the 8th and 9th of May, 2027. However, no confirmed dates have been released yet.
           </div>
         </div>
-
       </div>
     </div>
   </section>
@@ -322,7 +315,6 @@
   <!-- Contact Section -->
   <section id="contact" class="py-24 px-6 border-t border-[#d65b78]/20 bg-white dark:bg-[#120b0d]">
     <div class="max-w-6xl mx-auto">
-      
       <div class="text-center max-w-2xl mx-auto mb-16">
         <span class="text-brass text-xs uppercase tracking-[0.3em] font-semibold block mb-2">Communication</span>
         <h2 class="font-serif text-3xl sm:text-5xl font-normal text-[#2b1b20] dark:text-[#f8ecf0] mb-4">Reach the Secretariat</h2>
@@ -331,10 +323,7 @@
         </p>
       </div>
 
-      <!-- Contact Cards Grid (Email, WhatsApp, Instagram, TikTok) -->
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        
-        <!-- Email Card -->
         <div class="border border-[#d65b78]/20 bg-[#fdf2f4] dark:bg-[#1d1014] p-8 flex flex-col justify-between hover:border-brass/60 transition-all duration-300 group shadow-sm">
           <div>
             <div class="w-12 h-12 border border-[#d65b78]/30 bg-white dark:bg-[#28151b] flex items-center justify-center text-brass mb-6 group-hover:border-brass transition-colors shadow-xs">
@@ -352,7 +341,6 @@
           </a>
         </div>
 
-        <!-- WhatsApp Card -->
         <div class="border border-[#d65b78]/20 bg-[#fdf2f4] dark:bg-[#1d1014] p-8 flex flex-col justify-between hover:border-brass/60 transition-all duration-300 group shadow-sm">
           <div>
             <div class="w-12 h-12 border border-[#d65b78]/30 bg-white dark:bg-[#28151b] flex items-center justify-center text-brass mb-6 group-hover:border-brass transition-colors shadow-xs">
@@ -370,7 +358,6 @@
           </a>
         </div>
 
-        <!-- Instagram Card -->
         <div class="border border-[#d65b78]/20 bg-[#fdf2f4] dark:bg-[#1d1014] p-8 flex flex-col justify-between hover:border-brass/60 transition-all duration-300 group shadow-sm">
           <div>
             <div class="w-12 h-12 border border-[#d65b78]/30 bg-white dark:bg-[#28151b] flex items-center justify-center text-brass mb-6 group-hover:border-brass transition-colors shadow-xs">
@@ -388,7 +375,6 @@
           </a>
         </div>
 
-        <!-- TikTok Card -->
         <div class="border border-[#d65b78]/20 bg-[#fdf2f4] dark:bg-[#1d1014] p-8 flex flex-col justify-between hover:border-brass/60 transition-all duration-300 group shadow-sm">
           <div>
             <div class="w-12 h-12 border border-[#d65b78]/30 bg-white dark:bg-[#28151b] flex items-center justify-center text-brass mb-6 group-hover:border-brass transition-colors shadow-xs">
@@ -405,25 +391,20 @@
             <i class="fa-solid fa-arrow-right text-[10px]"></i>
           </a>
         </div>
-
       </div>
-
     </div>
   </section>
 
   <!-- Footer -->
   <footer class="w-full border-t border-[#d65b78]/20 bg-[#fdf2f4] dark:bg-[#180e11] py-12 px-6">
     <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
-      
       <div class="flex flex-col items-center md:items-start gap-2">
         <div class="flex items-center gap-3">
           <span class="font-serif text-xl tracking-wider text-[#2b1b20] dark:text-[#f8ecf0] font-semibold">DMGMUN</span>
-          <span class="text-xs tracking-widest text-[#7c5e67] dark:text-[#be9da6] uppercase"></span>
         </div>
         <p class="text-[11px] text-[#7c5e67] dark:text-[#be9da6] font-light">Delegate Modern Grounds Model United Nations</p>
       </div>
 
-      <!-- Social Links (Email, WhatsApp, Instagram, TikTok) -->
       <div class="flex items-center gap-6 text-[#7c5e67] dark:text-[#be9da6] text-base">
         <a href="mailto:contact@dmgmun.org" class="hover:text-brass transition-colors" aria-label="Email"><i class="fa-regular fa-envelope"></i></a>
         <a href="https://wa.me/1234567890" target="_blank" rel="noopener noreferrer" class="hover:text-brass transition-colors" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
@@ -432,50 +413,47 @@
       </div>
 
       <div class="text-[11px] text-[#7c5e67] dark:text-[#be9da6] tracking-wider uppercase text-center md:text-right">
-        <span>Made with <3 by the DMGMUN team</span>
+        <span>Made with &lt;3 by the DMGMUN team</span>
       </div>
-
     </div>
   </footer>
 
   <script>
-    // Theme Switcher Logic
-    function applyTheme(isDark) {
-      const html = document.documentElement;
+    // Synchronize UI icons with active theme state
+    function updateThemeUI(isDark) {
       const desktopIcon = document.getElementById('themeToggleIcon');
       const mobileIcon = document.getElementById('mobileThemeToggleIcon');
 
-      if (isDark) {
-        html.classList.add('dark');
-        if (desktopIcon) desktopIcon.className = 'fa-solid fa-sun text-sm';
-        if (mobileIcon) mobileIcon.className = 'fa-solid fa-sun text-xs';
-        localStorage.setItem('theme', 'dark');
-      } else {
-        html.classList.remove('dark');
-        if (desktopIcon) desktopIcon.className = 'fa-solid fa-moon text-sm';
-        if (mobileIcon) mobileIcon.className = 'fa-solid fa-moon text-xs';
-        localStorage.setItem('theme', 'light');
-      }
+      if (desktopIcon) desktopIcon.className = isDark ? 'fa-solid fa-sun text-sm' : 'fa-solid fa-moon text-sm';
+      if (mobileIcon) mobileIcon.className = isDark ? 'fa-solid fa-sun text-xs' : 'fa-solid fa-moon text-xs';
     }
 
+    // Toggle theme manually (stores explicit choice in localStorage)
     function toggleTheme() {
-      const isDark = document.documentElement.classList.contains('dark');
-      applyTheme(!isDark);
+      const isDark = document.documentElement.classList.toggle('dark');
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+      updateThemeUI(isDark);
     }
 
-    // Initialize Theme on Load based on localStorage or system preference
-    (function initTheme() {
-      const savedTheme = localStorage.getItem('theme');
-      if (savedTheme === 'dark') {
-        applyTheme(true);
-      } else if (savedTheme === 'light') {
-        applyTheme(false);
-      } else {
-        // System preference default check
-        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        applyTheme(prefersDark);
+    // Initialize UI on page load
+    document.addEventListener('DOMContentLoaded', () => {
+      const isDark = document.documentElement.classList.contains('dark');
+      updateThemeUI(isDark);
+    });
+
+    // Listen to system preference changes dynamically (only applies if user hasn't set an explicit preference)
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    mediaQuery.addEventListener('change', (e) => {
+      if (!localStorage.getItem('theme')) {
+        if (e.matches) {
+          document.documentElement.classList.add('dark');
+          updateThemeUI(true);
+        } else {
+          document.documentElement.classList.remove('dark');
+          updateThemeUI(false);
+        }
       }
-    })();
+    });
 
     // Toggle Mobile Navigation Menu
     function toggleMobileMenu() {
@@ -483,7 +461,6 @@
       menu.classList.toggle('hidden');
     }
 
-    // Toggle Mobile Menu Button Listener
     document.getElementById('mobileMenuBtn').addEventListener('click', toggleMobileMenu);
 
     // Accordion FAQ Toggle
