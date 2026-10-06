@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Delegate Modern Grounds Model United Nations | DMGMUN</title>
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Fonts: Cormorant Garamond & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brass: '#d65b78', // Logo Rose/Pink
+            brassHover: '#be4964', // Darker pink hover
+            brassLight: 'rgba(214, 91, 120, 0.15)', // Soft pink fill background
+          },
+          fontFamily: {
+            serif: ['Cormorant Garamond', 'serif'],
+            sans: ['Inter', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    /* Light Mode Background Pattern */
+    body {
+      background-color: #ffffff;
+      color: #2b1b20;
+      background-image: 
+        linear-gradient(rgba(214, 91, 120, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(214, 91, 120, 0.04) 1px, transparent 1px);
+      background-size: 50px 50px;
+    }
+
+    /* Dark Mode Background Pattern */
+    html.dark body {
+      background-color: #120b0d;
+      color: #f8ecf0;
+      background-image: 
+        linear-gradient(rgba(214, 91, 120, 0.07) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(214, 91, 120, 0.07) 1px, transparent 1px);
+      background-size: 50px 50px;
+    }
+
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #fdf2f4;
+    }
+    html.dark ::-webkit-scrollbar-track {
+      background: #0a0607;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #f5d3dc;
+      border-radius: 3px;
+    }
+    html.dark ::-webkit-scrollbar-thumb {
+      background: #3b1b23;
+      border-radius: 3px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #d65b78;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between selection:bg-brass selection:text-white">
+
+  <!-- Navigation Header -->
+  <header class="sticky top-0 z-40 w-full backdrop-blur-md bg-white/90 dark:bg-[#120b0d]/90 border-b border-[#d65b78]/20 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
+      
+      <!-- Top Left Logo: DMGMUN -->
+      <a href="#" class="flex flex-col group">
+        <span class="font-serif text-2xl tracking-wider text-[#2b1b20] dark:text-[#f8ecf0] font-semibold leading-tight group-hover:text-brass transition-colors">DMGMUN</span>
+        <span class="text-[9px] uppercase tracking-[0.25em] text-[#7c5e67] dark:text-[#be9da6]">Conference</span>
+      </a>
+
+      <!-- Desktop Links -->
+      <nav class="hidden md:flex items-center gap-8 text-xs uppercase tracking-[0.2em] font-medium text-[#7c5e67] dark:text-[#be9da6]">
+        <a href="#committees" class="hover:text-brass transition-colors">Committees</a>
+        <a href="#core-team" class="hover:text-brass transition-colors">applications</a>
+        <a href="#faq" class="hover:text-brass transition-colors">FAQ</a>
+        <a href="#contact" class="hover:text-brass transition-colors">Contact</a>
+      </nav>
+
+      <!-- Right Nav Actions: Theme Toggle, Status Badge & CTA -->
+      <div class="hidden sm:flex items-center gap-4">
+        
+        <!-- Dark Mode Toggle Button -->
+        <button id="themeToggleBtn" onclick="toggleTheme()" class="w-9 h-9 rounded-full border border-[#d65b78]/30 flex items-center justify-center text-brass hover:bg-brass/10 transition-all focus:outline-none" aria-label="Toggle Theme">
+          <i id="themeToggleIcon" class="fa-solid fa-moon text-sm"></i>
+        </button>
+
+        <div class="flex items-center gap-2 text-[11px] uppercase tracking-widest text-[#7c5e67] dark:text-[#be9da6] px-3 py-1 rounded-full border border-[#d65b78]/20 bg-[#fdf2f4] dark:bg-[#201015]">
+          <span class="w-2 h-2 rounded-full bg-brass animate-pulse"></span>
+          <span>core team Applications Open</span>
+        </div>
+        
+        <a href="https://forms.gle/Dxjdftj2WwWSoqcB8" target="_blank" rel="noopener noreferrer" class="text-xs uppercase tracking-[0.18em] px-4 py-2.5 bg-brass text-white font-semibold hover:bg-brassHover transition-all shadow-sm">
+          Apply Now
+        </a>
+      </div>
+
+      <!-- Mobile Right Section (Toggle + Mobile Menu Button) -->
+      <div class="flex sm:hidden items-center gap-3">
+        <!-- Mobile Dark Mode Toggle Button -->
+        <button id="mobileThemeToggleBtn" onclick="toggleTheme()" class="w-8 h-8 rounded-full border border-[#d65b78]/30 flex items-center justify-center text-brass hover:bg-brass/10 transition-all focus:outline-none" aria-label="Toggle Theme">
+          <i id="mobileThemeToggleIcon" class="fa-solid fa-moon text-xs"></i>
+        </button>
+
+        <!-- Mobile Hamburger Button -->
+        <button id="mobileMenuBtn" class="text-[#2b1b20] dark:text-[#f8ecf0] hover:text-brass text-xl focus:outline-none" aria-label="Toggle Navigation">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Dropdown Navigation -->
+    <div id="mobileMenu" class="hidden md:hidden bg-white dark:bg-[#180e11] border-b border-[#d65b78]/20 px-6 py-6 flex flex-col gap-4 text-xs uppercase tracking-[0.2em]">
+      <a href="#committees" onclick="toggleMobileMenu()" class="text-[#7c5e67] dark:text-[#be9da6] hover:text-brass py-1">Committees</a>
+      <a href="#core-team" onclick="toggleMobileMenu()" class="text-[#7c5e67] dark:text-[#be9da6] hover:text-brass py-1">applications</a>
+      <a href="#faq" onclick="toggleMobileMenu()" class="text-[#7c5e67] dark:text-[#be9da6] hover:text-brass py-1">FAQ</a>
+      <a href="#contact" onclick="toggleMobileMenu()" class="text-[#7c5e67] dark:text-[#be9da6] hover:text-brass py-1">Contact</a>
+      <div class="pt-4 border-t border-[#d65b78]/20 flex flex-col gap-3">
+        <div class="flex items-center gap-2 text-[11px] uppercase tracking-widest text-[#7c5e67] dark:text-[#be9da6]">
+          <span class="w-2 h-2 rounded-full bg-brass"></span>
+          <span>core team Applications Open</span>
+        </div>
+        <a href="https://forms.gle/Dxjdftj2WwWSoqcB8" target="_blank" rel="noopener noreferrer" class="text-xs uppercase tracking-[0.18em] px-4 py-3 bg-brass text-white font-semibold text-center w-full">
+          Core Team Application
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="relative min-h-[calc(100vh-5rem)] flex items-center justify-center px-6 py-20 overflow-hidden">
+    <!-- Subtle architectural background accent -->
+    <div class="absolute inset-0 flex items-center justify-center opacity-10 dark:opacity-20 pointer-events-none">
+      <div class="w-[600px] h-[600px] border border-brass rounded-full"></div>
+      <div class="absolute w-[450px] h-[450px] border border-brass/50 rounded-full"></div>
+    </div>
+
+    <div class="max-w-4xl mx-auto text-center z-10">
+      <!-- Top Badge: SUMMER 2027 -->
+      <div class="inline-flex items-center gap-3 px-4 py-1.5 rounded-full border border-brass/30 bg-brassLight text-brass text-xs uppercase tracking-[0.3em] font-medium mb-8">
+        <i class="fa-regular fa-calendar-check text-[11px]"></i>
+        8-9 MAY 2027, AOU BADARO
+      </div>
+
+      <h1 class="font-serif text-4xl sm:text-6xl md:text-7xl font-normal leading-[1.1] tracking-tight text-[#2b1b20] dark:text-[#f8ecf0] mb-8">
+        Delegate Modern Grounds<br>
+        <span class="italic font-light text-brass">Model United Nations</span>
+      </h1>
+
+      <p class="text-[#7c5e67] dark:text-[#be9da6] text-base sm:text-lg max-w-2xl mx-auto font-light leading-relaxed mb-10">
+        Strengthening youth's diplomacy, policymaking, networking and public speaking. Be apart of the first edition of DMGMUN.
+      </p>
+
+      <div class="w-12 h-[1px] bg-brass mx-auto mb-10"></div>
+
+      <!-- Hero Actions -->
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
+        <a href="https://forms.gle/Dxjdftj2WwWSoqcB8" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto text-xs uppercase tracking-[0.2em] px-8 py-4 bg-brass text-white font-semibold hover:bg-brassHover transition-all shadow-lg hover:shadow-brass/20 text-center">
+          Core Team Application
+        </a>
+        <a href="#contact" class="w-full sm:w-auto text-xs uppercase tracking-[0.2em] px-8 py-4 bg-white dark:bg-[#1f1216] text-[#2b1b20] dark:text-[#f8ecf0] border border-[#d65b78]/30 hover:border-brass hover:text-brass transition-all text-center">
+          Contact Secretariat
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Committees Section -->
+  <section id="committees" class="py-24 px-6 border-t border-[#d65b78]/20 bg-[#fdf2f4] dark:bg-[#180e11]">
+    <div class="max-w-6xl mx-auto">
+      
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <span class="text-brass text-xs uppercase tracking-[0.3em] font-semibold block mb-2">Committees</span>
+        <h2 class="font-serif text-3xl sm:text-5xl font-normal text-[#2b1b20] dark:text-[#f8ecf0] mb-4">Our carefully chosen committees</h2>
+      </div>
+
+      <!-- Committee Cards (DISEC, UN Women, WHO) -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        
+        <!-- Committee 1: DISEC -->
+        <div class="group border border-[#d65b78]/20 bg-white dark:bg-[#201116] hover:border-brass/50 p-8 flex flex-col justify-between transition-all duration-300 shadow-sm hover:shadow-md">
+          <div>
+            <div class="flex justify-between items-start mb-6">
+              <span class="px-2.5 py-1 bg-brassLight border border-brass/30 text-brass text-[10px] uppercase tracking-widest font-semibold">General Assembly 1</span>
+              <i class="fa-solid fa-shield-halved text-[#7c5e67] dark:text-[#be9da6] group-hover:text-brass transition-colors"></i>
+            </div>
+            <h3 class="font-serif text-3xl text-[#2b1b20] dark:text-[#f8ecf0] mb-2">DISEC</h3>
+            <p class="text-[11px] uppercase tracking-wider text-brass mb-6">Disarmament & International Security</p>
+          </div>
+          <div class="pt-6 border-t border-[#d65b78]/20">
+            <span class="text-[10px] uppercase tracking-widest text-[#7c5e67] dark:text-[#be9da6] block mb-2 font-medium">Committee Agenda</span>
+            <p class="text-xs text-[#2b1b20] dark:text-[#f8ecf0] font-medium leading-relaxed">
+              TBD
+            </p>
+          </div>
+        </div>
+
+        <!-- Committee 2: UN Women -->
+        <div class="group border border-[#d65b78]/20 bg-white dark:bg-[#201116] hover:border-brass/50 p-8 flex flex-col justify-between transition-all duration-300 shadow-sm hover:shadow-md">
+          <div>
+            <div class="flex justify-between items-start mb-6">
+              <span class="px-2.5 py-1 bg-brassLight border border-brass/30 text-brass text-[10px] uppercase tracking-widest font-semibold">Specialized Entity</span>
+              <i class="fa-solid fa-venus text-[#7c5e67] dark:text-[#be9da6] group-hover:text-brass transition-colors"></i>
+            </div>
+            <h3 class="font-serif text-3xl text-[#2b1b20] dark:text-[#f8ecf0] mb-2">UN - Women</h3>
+            <p class="text-[11px] uppercase tracking-wider text-brass mb-6">Gender Equality & Empowerment</p>
+          </div>
+          <div class="pt-6 border-t border-[#d65b78]/20">
+            <span class="text-[10px] uppercase tracking-widest text-[#7c5e67] dark:text-[#be9da6] block mb-2 font-medium">Committee Agenda</span>
+            <p class="text-xs text-[#2b1b20] dark:text-[#f8ecf0] font-medium leading-relaxed">
+              TBD
+            </p>
+          </div>
+        </div>
+
+        <!-- Committee 3: WHO -->
+        <div class="group border border-[#d65b78]/20 bg-white dark:bg-[#201116] hover:border-brass/50 p-8 flex flex-col justify-between transition-all duration-300 shadow-sm hover:shadow-md">
+          <div>
+            <div class="flex justify-between items-start mb-6">
+              <span class="px-2.5 py-1 bg-brassLight border border-brass/30 text-brass text-[10px] uppercase tracking-widest font-semibold">Specialized Agency</span>
+              <i class="fa-solid fa-staff-snake text-[#7c5e67] dark:text-[#be9da6] group-hover:text-brass transition-colors"></i>
+            </div>
+            <h3 class="font-serif text-3xl text-[#2b1b20] dark:text-[#f8ecf0] mb-2">WHO</h3>
+            <p class="text-[11px] uppercase tracking-wider text-brass mb-6">World Health Organization</p>
+          </div>
+          <div class="pt-6 border-t border-[#d65b78]/20">
+            <span class="text-[10px] uppercase tracking-widest text-[#7c5e67] dark:text-[#be9da6] block mb-2 font-medium">Committee Agenda</span>
+            <p class="text-xs text-[#2b1b20] dark:text-[#f8ecf0] font-medium leading-relaxed">
+              TBD
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Core Team Callout Section -->
+  <section id="core-team" class="py-20 px-6 border-t border-[#d65b78]/20 bg-white dark:bg-[#120b0d]">
+    <div class="max-w-5xl mx-auto border border-brass/30 bg-[#fdf2f4] dark:bg-[#1e0f14] p-8 sm:p-14 relative overflow-hidden text-center sm:text-left flex flex-col md:flex-row items-center justify-between gap-8">
+      <div class="max-w-2xl">
+        <span class="text-brass text-xs uppercase tracking-[0.3em] font-semibold block mb-2">Core Team Recruitment</span>
+        <h3 class="font-serif text-3xl sm:text-4xl text-[#2b1b20] dark:text-[#f8ecf0] mb-4">Core Team Application</h3>
+        <p class="text-[#7c5e67] dark:text-[#be9da6] text-sm font-light leading-relaxed">
+          Become a person involved in shaping the whole conference.
+        </p>
+      </div>
+      <div class="shrink-0">
+        <a href="https://forms.gle/Dxjdftj2WwWSoqcB8" target="_blank" rel="noopener noreferrer" class="inline-block text-xs uppercase tracking-[0.2em] px-8 py-4 bg-brass text-white font-semibold hover:bg-brassHover transition-all shadow-md">
+          Core Team Application
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section (2 questions only) -->
+  <section id="faq" class="py-24 px-6 border-t border-[#d65b78]/20 bg-[#fdf2f4] dark:bg-[#180e11]">
+    <div class="max-w-4xl mx-auto">
+      
+      <div class="text-center mb-16">
+        <span class="text-brass text-xs uppercase tracking-[0.3em] font-semibold block mb-2">Inquiries</span>
+        <h2 class="font-serif text-3xl sm:text-5xl font-normal text-[#2b1b20] dark:text-[#f8ecf0] mb-4">Frequently Asked Questions</h2>
+        <p class="text-[#7c5e67] dark:text-[#be9da6] text-sm font-light">Key details regarding conference timelines and delegate registration.</p>
+      </div>
+
+      <div class="space-y-4">
+        
+        <!-- FAQ 1: Delegate Registrations -->
+        <div class="border border-[#d65b78]/20 bg-white dark:bg-[#201116] transition-all shadow-sm">
+          <button onclick="toggleFaq(1)" class="w-full text-left p-6 flex justify-between items-center text-[#2b1b20] dark:text-[#f8ecf0] hover:text-brass transition-colors focus:outline-none">
+            <span class="font-serif text-xl sm:text-2xl">When will delegate registrations open?</span>
+            <i id="faq-icon-1" class="fa-solid fa-chevron-down text-xs text-brass transition-transform duration-300"></i>
+          </button>
+          <div id="faq-answer-1" class="hidden px-6 pb-6 text-[#7c5e67] dark:text-[#be9da6] text-xs sm:text-sm leading-relaxed font-light border-t border-[#d65b78]/20 pt-4">
+            Delegate registrations are expected to open early 2027.
+          </div>
+        </div>
+
+        <!-- FAQ 2: Event Date -->
+        <div class="border border-[#d65b78]/20 bg-white dark:bg-[#201116] transition-all shadow-sm">
+          <button onclick="toggleFaq(2)" class="w-full text-left p-6 flex justify-between items-center text-[#2b1b20] dark:text-[#f8ecf0] hover:text-brass transition-colors focus:outline-none">
+            <span class="font-serif text-xl sm:text-2xl">When will it take place?</span>
+            <i id="faq-icon-2" class="fa-solid fa-chevron-down text-xs text-brass transition-transform duration-300"></i>
+          </button>
+          <div id="faq-answer-2" class="hidden px-6 pb-6 text-[#7c5e67] dark:text-[#be9da6] text-xs sm:text-sm leading-relaxed font-light border-t border-[#d65b78]/20 pt-4">
+            DMGMUN is estimated to be hosted around on the 8th and 9th of May, 2027. However, no confirmed dates have been released yet.
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="py-24 px-6 border-t border-[#d65b78]/20 bg-white dark:bg-[#120b0d]">
+    <div class="max-w-6xl mx-auto">
+      
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <span class="text-brass text-xs uppercase tracking-[0.3em] font-semibold block mb-2">Communication</span>
+        <h2 class="font-serif text-3xl sm:text-5xl font-normal text-[#2b1b20] dark:text-[#f8ecf0] mb-4">Reach the Secretariat</h2>
+        <p class="text-[#7c5e67] dark:text-[#be9da6] text-sm font-light leading-relaxed">
+          Connect with us through our official communication and social media channels.
+        </p>
+      </div>
+
+      <!-- Contact Cards Grid (Email, WhatsApp, Instagram, TikTok) -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        
+        <!-- Email Card -->
+        <div class="border border-[#d65b78]/20 bg-[#fdf2f4] dark:bg-[#1d1014] p-8 flex flex-col justify-between hover:border-brass/60 transition-all duration-300 group shadow-sm">
+          <div>
+            <div class="w-12 h-12 border border-[#d65b78]/30 bg-white dark:bg-[#28151b] flex items-center justify-center text-brass mb-6 group-hover:border-brass transition-colors shadow-xs">
+              <i class="fa-regular fa-envelope text-lg"></i>
+            </div>
+            <span class="text-[10px] uppercase tracking-widest text-[#7c5e67] dark:text-[#be9da6] block mb-1">Official Inquiry</span>
+            <h3 class="font-serif text-xl text-[#2b1b20] dark:text-[#f8ecf0] mb-3">Email Secretariat</h3>
+            <p class="text-[#7c5e67] dark:text-[#be9da6] text-xs font-light leading-relaxed mb-6">
+              Direct line for delegate inquiries, committee documents, and institutional delegations.
+            </p>
+          </div>
+          <a href="mailto:contact@dmgmun.org" class="text-xs text-brass font-medium hover:underline inline-flex items-center gap-2">
+            <span>contact@dmgmun.org</span>
+            <i class="fa-solid fa-arrow-right text-[10px]"></i>
+          </a>
+        </div>
+
+        <!-- WhatsApp Card -->
+        <div class="border border-[#d65b78]/20 bg-[#fdf2f4] dark:bg-[#1d1014] p-8 flex flex-col justify-between hover:border-brass/60 transition-all duration-300 group shadow-sm">
+          <div>
+            <div class="w-12 h-12 border border-[#d65b78]/30 bg-white dark:bg-[#28151b] flex items-center justify-center text-brass mb-6 group-hover:border-brass transition-colors shadow-xs">
+              <i class="fa-brands fa-whatsapp text-lg"></i>
+            </div>
+            <span class="text-[10px] uppercase tracking-widest text-[#7c5e67] dark:text-[#be9da6] block mb-1">Instant Support</span>
+            <h3 class="font-serif text-xl text-[#2b1b20] dark:text-[#f8ecf0] mb-3">WhatsApp</h3>
+            <p class="text-[#7c5e67] dark:text-[#be9da6] text-xs font-light leading-relaxed mb-6">
+              Chat directly with our team for quick support, urgent queries, and live assistance.
+            </p>
+          </div>
+          <a href="https://wa.me/1234567890" target="_blank" rel="noopener noreferrer" class="text-xs text-brass font-medium hover:underline inline-flex items-center gap-2">
+            <span>Chat on WhatsApp</span>
+            <i class="fa-solid fa-arrow-right text-[10px]"></i>
+          </a>
+        </div>
+
+        <!-- Instagram Card -->
+        <div class="border border-[#d65b78]/20 bg-[#fdf2f4] dark:bg-[#1d1014] p-8 flex flex-col justify-between hover:border-brass/60 transition-all duration-300 group shadow-sm">
+          <div>
+            <div class="w-12 h-12 border border-[#d65b78]/30 bg-white dark:bg-[#28151b] flex items-center justify-center text-brass mb-6 group-hover:border-brass transition-colors shadow-xs">
+              <i class="fa-brands fa-instagram text-lg"></i>
+            </div>
+            <span class="text-[10px] uppercase tracking-widest text-[#7c5e67] dark:text-[#be9da6] block mb-1">Social Dispatch</span>
+            <h3 class="font-serif text-xl text-[#2b1b20] dark:text-[#f8ecf0] mb-3">Instagram</h3>
+            <p class="text-[#7c5e67] dark:text-[#be9da6] text-xs font-light leading-relaxed mb-6">
+              Follow real-time Secretariat announcements, recruitment deadlines, and session teasers.
+            </p>
+          </div>
+          <a href="https://instagram.com/dmgmun" target="_blank" rel="noopener noreferrer" class="text-xs text-brass font-medium hover:underline inline-flex items-center gap-2">
+            <span>@dmgmun</span>
+            <i class="fa-solid fa-arrow-right text-[10px]"></i>
+          </a>
+        </div>
+
+        <!-- TikTok Card -->
+        <div class="border border-[#d65b78]/20 bg-[#fdf2f4] dark:bg-[#1d1014] p-8 flex flex-col justify-between hover:border-brass/60 transition-all duration-300 group shadow-sm">
+          <div>
+            <div class="w-12 h-12 border border-[#d65b78]/30 bg-white dark:bg-[#28151b] flex items-center justify-center text-brass mb-6 group-hover:border-brass transition-colors shadow-xs">
+              <i class="fa-brands fa-tiktok text-lg"></i>
+            </div>
+            <span class="text-[10px] uppercase tracking-widest text-[#7c5e67] dark:text-[#be9da6] block mb-1">Video Highlights</span>
+            <h3 class="font-serif text-xl text-[#2b1b20] dark:text-[#f8ecf0] mb-3">TikTok</h3>
+            <p class="text-[#7c5e67] dark:text-[#be9da6] text-xs font-light leading-relaxed mb-6">
+              Watch behind-the-scenes content, committee teasers, and delegate tips on TikTok.
+            </p>
+          </div>
+          <a href="https://tiktok.com/@dmgmun" target="_blank" rel="noopener noreferrer" class="text-xs text-brass font-medium hover:underline inline-flex items-center gap-2">
+            <span>@dmgmun</span>
+            <i class="fa-solid fa-arrow-right text-[10px]"></i>
+          </a>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="w-full border-t border-[#d65b78]/20 bg-[#fdf2f4] dark:bg-[#180e11] py-12 px-6">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+      
+      <div class="flex flex-col items-center md:items-start gap-2">
+        <div class="flex items-center gap-3">
+          <span class="font-serif text-xl tracking-wider text-[#2b1b20] dark:text-[#f8ecf0] font-semibold">DMGMUN</span>
+          <span class="text-xs tracking-widest text-[#7c5e67] dark:text-[#be9da6] uppercase"></span>
+        </div>
+        <p class="text-[11px] text-[#7c5e67] dark:text-[#be9da6] font-light">Delegate Modern Grounds Model United Nations</p>
+      </div>
+
+      <!-- Social Links (Email, WhatsApp, Instagram, TikTok) -->
+      <div class="flex items-center gap-6 text-[#7c5e67] dark:text-[#be9da6] text-base">
+        <a href="mailto:contact@dmgmun.org" class="hover:text-brass transition-colors" aria-label="Email"><i class="fa-regular fa-envelope"></i></a>
+        <a href="https://wa.me/1234567890" target="_blank" rel="noopener noreferrer" class="hover:text-brass transition-colors" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+        <a href="https://instagram.com/dmgmun" target="_blank" rel="noopener noreferrer" class="hover:text-brass transition-colors" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a href="https://tiktok.com/@dmgmun" target="_blank" rel="noopener noreferrer" class="hover:text-brass transition-colors" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+      </div>
+
+      <div class="text-[11px] text-[#7c5e67] dark:text-[#be9da6] tracking-wider uppercase text-center md:text-right">
+        <span>Made with <3 by the DMGMUN team</span>
+      </div>
+
+    </div>
+  </footer>
+
+  <script>
+    // Theme Switcher Logic
+    function applyTheme(isDark) {
+      const html = document.documentElement;
+      const desktopIcon = document.getElementById('themeToggleIcon');
+      const mobileIcon = document.getElementById('mobileThemeToggleIcon');
+
+      if (isDark) {
+        html.classList.add('dark');
+        if (desktopIcon) desktopIcon.className = 'fa-solid fa-sun text-sm';
+        if (mobileIcon) mobileIcon.className = 'fa-solid fa-sun text-xs';
+        localStorage.setItem('theme', 'dark');
+      } else {
+        html.classList.remove('dark');
+        if (desktopIcon) desktopIcon.className = 'fa-solid fa-moon text-sm';
+        if (mobileIcon) mobileIcon.className = 'fa-solid fa-moon text-xs';
+        localStorage.setItem('theme', 'light');
+      }
+    }
+
+    function toggleTheme() {
+      const isDark = document.documentElement.classList.contains('dark');
+      applyTheme(!isDark);
+    }
+
+    // Initialize Theme on Load based on localStorage or system preference
+    (function initTheme() {
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme === 'dark') {
+        applyTheme(true);
+      } else if (savedTheme === 'light') {
+        applyTheme(false);
+      } else {
+        // System preference default check
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        applyTheme(prefersDark);
+      }
+    })();
+
+    // Toggle Mobile Navigation Menu
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobileMenu');
+      menu.classList.toggle('hidden');
+    }
+
+    // Toggle Mobile Menu Button Listener
+    document.getElementById('mobileMenuBtn').addEventListener('click', toggleMobileMenu);
+
+    // Accordion FAQ Toggle
+    function toggleFaq(id) {
+      const answer = document.getElementById(`faq-answer-${id}`);
+      const icon = document.getElementById(`faq-icon-${id}`);
+      
+      if (answer.classList.contains('hidden')) {
+        answer.classList.remove('hidden');
+        icon.classList.add('rotate-180');
+      } else {
+        answer.classList.add('hidden');
+        icon.classList.remove('rotate-180');
+      }
+    }
+  </script>
+</body>
+</html>
